@@ -1,0 +1,230 @@
+[
+  {
+    "id": "moments-static",
+    "creativeType": "Moments - Static",
+    "category": "Moments",
+    "dimensions": [{ "width": 320, "height": 480, "supportsRetina": false }],
+    "supportedFormats": ["JPG", "PNG", "GIF"],
+    "fileSizeLimit": { "maxKB": 200 },
+    "videoSpecs": null
+  },
+  {
+    "id": "moments-rich-media",
+    "creativeType": "Moments - Rich Media",
+    "category": "Moments",
+    "dimensions": [{ "width": 320, "height": 480, "supportsRetina": true }],
+    "supportedFormats": ["JPG", "PNG", "GIF", "SVG", "HTML5", "MP4", "MOV"],
+    "fileSizeLimit": { "maxKB": 4096, "recommendedKB": 500 },
+    "videoSpecs": {
+      "minDurationSeconds": 6,
+      "maxDurationSeconds": 30,
+      "recommendedDurationSeconds": [6, 15],
+      "frameRates": [23.98, 29.97],
+      "supportedFormats": ["MP4", "MOV"]
+    }
+  },
+  {
+    "id": "pa-banners-static",
+    "creativeType": "P/A Banners - Static",
+    "category": "P/A Banners",
+    "dimensions": [
+      { "width": 300, "height": 250, "supportsRetina": false },
+      { "width": 320, "height": 50, "supportsRetina": false },
+      { "width": 728, "height": 90, "supportsRetina": false },
+      { "width": 300, "height": 600, "supportsRetina": false },
+      { "width": 160, "height": 600, "supportsRetina": false },
+      { "width": 320, "height": 480, "label": "Standard Interstitial", "supportsRetina": false },
+      { "width": 768, "height": 1024, "label": "Standard Interstitial", "supportsRetina": false }
+    ],
+    "supportedFormats": ["JPG", "PNG", "GIF"],
+    "fileSizeLimit": { "maxKB": 200 },
+    "videoSpecs": null
+  },
+  {
+    "id": "pa-banners-rich-media",
+    "creativeType": "P/A Banners - Rich Media",
+    "category": "P/A Banners",
+    "dimensions": [
+      { "width": 300, "height": 250, "supportsRetina": true },
+      { "width": 320, "height": 50, "supportsRetina": true },
+      { "width": 728, "height": 90, "supportsRetina": true },
+      { "width": 300, "height": 600, "supportsRetina": true },
+      { "width": 160, "height": 600, "supportsRetina": true },
+      { "width": 320, "height": 480, "label": "Standard Interstitial", "supportsRetina": true },
+      { "width": 768, "height": 1024, "label": "Standard Interstitial", "supportsRetina": true }
+    ],
+    "supportedFormats": ["JPG", "PNG", "GIF", "SVG", "HTML5", "MP4", "MOV"],
+    "fileSizeLimit": { "maxKB": 4096, "recommendedKB": 500 },
+    "videoSpecs": {
+      "minDurationSeconds": 6,
+      "maxDurationSeconds": 30,
+      "recommendedDurationSeconds": [6, 15],
+      "frameRates": [23.98, 29.97],
+      "supportedFormats": ["MP4", "MOV"]
+    }
+  },
+  {
+    "id": "pa-banners-rich-media-expandable",
+    "creativeType": "P/A Banners - Rich Media Expandable",
+    "category": "P/A Banners",
+    "dimensions": [
+      { "width": 300, "height": 250, "label": "Pre-Expand", "supportsRetina": true },
+      { "width": 320, "height": 50, "label": "Pre-Expand", "supportsRetina": true },
+      { "width": 728, "height": 90, "label": "Pre-Expand", "supportsRetina": true },
+      { "width": 320, "height": 480, "label": "Expanded", "supportsRetina": true },
+      { "width": 768, "height": 1024, "label": "Expanded", "supportsRetina": true },
+      { "width": 1024, "height": 768, "label": "Expanded", "supportsRetina": true }
+    ],
+    "supportedFormats": ["JPG", "PNG", "GIF", "SVG", "HTML5", "MP4", "MOV"],
+    "fileSizeLimit": { "maxKB": 4096, "recommendedKB": 500 },
+    "videoSpecs": {
+      "minDurationSeconds": 6,
+      "maxDurationSeconds": 30,
+      "recommendedDurationSeconds": [6, 15],
+      "frameRates": [23.98, 29.97],
+      "supportedFormats": ["MP4", "MOV"]
+    }
+  },
+  {
+    "id": "high-impact-320x480",
+    "creativeType": "High-Impact 320x480",
+    "category": "High-Impact",
+    "dimensions": [{ "width": 320, "height": 480, "supportsRetina": true }],
+    "supportedFormats": ["JPG", "PNG", "GIF", "SVG", "HTML5", "MP4", "MOV"],
+    "fileSizeLimit": { "maxKB": 4096, "recommendedKB": 500 },
+    "videoSpecs": {
+      "minDurationSeconds": 6,
+      "maxDurationSeconds": 30,
+      "recommendedDurationSeconds": [6, 15],
+      "frameRates": [23.98, 29.97],
+      "supportedFormats": ["MP4", "MOV"]
+    }
+  },
+  {
+    "id": "high-impact-300x250",
+    "creativeType": "High-Impact 300x250",
+    "category": "High-Impact",
+    "dimensions": [{ "width": 300, "height": 250, "supportsRetina": true }],
+    "supportedFormats": ["JPG", "PNG", "GIF", "SVG"],
+    "fileSizeLimit": { "maxKB": 4096, "recommendedKB": 500 },
+    "videoSpecs": null
+  },
+  {
+    "id": "high-impact-320x100",
+    "creativeType": "High-Impact 320x100",
+    "category": "High-Impact",
+    "dimensions": [{ "width": 320, "height": 100, "supportsRetina": true }],
+    "supportedFormats": ["JPG", "PNG", "GIF", "SVG"],
+    "fileSizeLimit": { "maxKB": 4096, "recommendedKB": 500 },
+    "videoSpecs": null
+  },
+  {
+    "id": "olv",
+    "creativeType": "Online Video (OLV)",
+    "category": "OLV",
+    "dimensions": [
+      { "width": 854, "height": 480, "label": "Min 16:9", "supportsRetina": false },
+      { "width": 1920, "height": 1080, "label": "Max 16:9", "supportsRetina": false }
+    ],
+    "supportedFormats": ["MP4", "MOV"],
+    "fileSizeLimit": { "maxKB": 51200 },
+    "videoSpecs": {
+      "maxDurationSeconds": 30,
+      "recommendedDurationSeconds": [15, 30],
+      "supportedFormats": ["MP4", "MOV"]
+    }
+  },
+  {
+    "id": "ctv",
+    "creativeType": "Connected TV (CTV)",
+    "category": "CTV",
+    "dimensions": [{ "width": 1920, "height": 1080, "label": "1080p", "supportsRetina": false }],
+    "supportedFormats": ["MP4", "MOV"],
+    "fileSizeLimit": { "maxKB": 51200 },
+    "videoSpecs": {
+      "maxDurationSeconds": 30,
+      "recommendedDurationSeconds": [15, 30],
+      "supportedFormats": ["MP4", "MOV"]
+    }
+  },
+  {
+    "id": "social-meta-feed",
+    "creativeType": "Social - Meta Feed",
+    "category": "Social",
+    "platform": "Meta",
+    "placement": "Feed",
+    "dimensions": [{ "width": 1080, "height": 1080, "label": "1:1 Feed", "supportsRetina": false }],
+    "supportedFormats": ["JPG", "PNG", "GIF", "MP4", "MOV"],
+    "fileSizeLimit": { "maxKB": 30720 },
+    "videoSpecs": {
+      "minDurationSeconds": 1,
+      "maxDurationSeconds": 14460,
+      "supportedFormats": ["MP4", "MOV"]
+    },
+    "textSpecs": { "primaryText": 125, "headline": 27, "description": 27 }
+  },
+  {
+    "id": "social-meta-stories",
+    "creativeType": "Social - Meta Stories & Reels",
+    "category": "Social",
+    "platform": "Meta",
+    "placement": "Stories & Reels",
+    "dimensions": [{ "width": 1080, "height": 1920, "label": "9:16 Stories/Reels", "supportsRetina": false }],
+    "supportedFormats": ["JPG", "PNG", "GIF", "MP4", "MOV"],
+    "fileSizeLimit": { "maxKB": 30720 },
+    "videoSpecs": {
+      "minDurationSeconds": 1,
+      "maxDurationSeconds": 14460,
+      "supportedFormats": ["MP4", "MOV"]
+    },
+    "textSpecs": { "primaryText": 125, "headline": 27, "description": 27 }
+  },
+  {
+    "id": "social-snap",
+    "creativeType": "Social - Snap",
+    "category": "Social",
+    "platform": "Snap",
+    "dimensions": [{ "width": 1080, "height": 1920, "label": "9:16", "supportsRetina": false }],
+    "supportedFormats": ["JPG", "PNG", "MP4", "MOV"],
+    "fileSizeLimit": { "maxKB": 1048576 },
+    "videoSpecs": {
+      "minDurationSeconds": 3,
+      "maxDurationSeconds": 180,
+      "supportedFormats": ["MP4", "MOV"]
+    },
+    "textSpecs": { "brand": 25, "headline": 34 }
+  },
+  {
+    "id": "social-pinterest",
+    "creativeType": "Social - Pinterest",
+    "category": "Social",
+    "platform": "Pinterest",
+    "dimensions": [{ "width": 1000, "height": 1500, "label": "2:3", "supportsRetina": false }],
+    "supportedFormats": ["JPG", "PNG", "MP4", "MOV", "M4V"],
+    "fileSizeLimit": { "maxKB": 20480 },
+    "videoSpecs": {
+      "minDurationSeconds": 4,
+      "maxDurationSeconds": 900,
+      "recommendedDurationSeconds": [15],
+      "supportedFormats": ["MP4", "MOV", "M4V"]
+    },
+    "textSpecs": { "primaryText": 100, "description": 500 }
+  },
+  {
+    "id": "dooh",
+    "creativeType": "Digital Out of Home (DOOH)",
+    "category": "DOOH",
+    "dimensions": [
+      { "width": 1080, "height": 1920, "label": "Portrait", "supportsRetina": false },
+      { "width": 1920, "height": 1080, "label": "Landscape", "supportsRetina": false },
+      { "width": 1400, "height": 400, "label": "Banner/Strip", "supportsRetina": false }
+    ],
+    "supportedFormats": ["JPG", "MP4", "MOV"],
+    "fileSizeLimit": { "maxKB": 51200 },
+    "videoSpecs": {
+      "maxDurationSeconds": 30,
+      "recommendedDurationSeconds": [15, 30],
+      "supportedFormats": ["MOV", "MP4"]
+    }
+  }
+]

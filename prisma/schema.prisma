@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model CreativeSpec {
+  id               String  @id
+  creativeType     String
+  category         String
+  platform         String?
+  placement        String?
+  dimensions       String  // JSON array of Dimension[]
+  supportedFormats String  // JSON array of string[]
+  fileSizeLimit    String  // JSON of FileSizeLimit
+  videoSpecs       String? // JSON of VideoSpecs (nullable)
+  textSpecs        String? // JSON of TextSpecs (nullable)
+  notes            String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
