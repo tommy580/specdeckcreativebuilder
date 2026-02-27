@@ -149,35 +149,95 @@
   },
   {
     "id": "social-meta-feed",
-    "creativeType": "Social - Meta Feed",
+    "creativeType": "Social - Meta Feed Image",
     "category": "Social",
     "platform": "Meta",
     "placement": "Feed",
-    "dimensions": [{ "width": 1080, "height": 1080, "label": "1:1 Feed", "supportsRetina": false }],
-    "supportedFormats": ["JPG", "PNG", "GIF", "MP4", "MOV"],
+    "dimensions": [
+      { "width": 1080, "height": 1080, "label": "Square 1:1", "supportsRetina": false },
+      { "width": 1080, "height": 1350, "label": "Vertical 4:5", "supportsRetina": false }
+    ],
+    "supportedFormats": ["JPG", "PNG"],
     "fileSizeLimit": { "maxKB": 30720 },
-    "videoSpecs": {
-      "minDurationSeconds": 1,
-      "maxDurationSeconds": 14460,
-      "supportedFormats": ["MP4", "MOV"]
-    },
-    "textSpecs": { "primaryText": 125, "headline": 27, "description": 27 }
+    "videoSpecs": null,
+    "textSpecs": { "primaryText": 125, "headline": 40, "description": 30 },
+    "notes": "1:1 for desktop+mobile, 4:5 for mobile only (takes more screen space). Minimum resolution 600x600."
   },
   {
-    "id": "social-meta-stories",
-    "creativeType": "Social - Meta Stories & Reels",
+    "id": "social-meta-feed-video",
+    "creativeType": "Social - Meta Feed Video",
     "category": "Social",
     "platform": "Meta",
-    "placement": "Stories & Reels",
-    "dimensions": [{ "width": 1080, "height": 1920, "label": "9:16 Stories/Reels", "supportsRetina": false }],
-    "supportedFormats": ["JPG", "PNG", "GIF", "MP4", "MOV"],
-    "fileSizeLimit": { "maxKB": 30720 },
+    "placement": "Feed",
+    "dimensions": [
+      { "width": 1080, "height": 1080, "label": "Square 1:1", "supportsRetina": false },
+      { "width": 1080, "height": 1350, "label": "Vertical 4:5", "supportsRetina": false }
+    ],
+    "supportedFormats": ["MP4", "MOV", "GIF"],
+    "fileSizeLimit": { "maxKB": 4194304 },
     "videoSpecs": {
       "minDurationSeconds": 1,
-      "maxDurationSeconds": 14460,
+      "maxDurationSeconds": 14400,
+      "recommendedDurationSeconds": [15, 30],
+      "frameRates": [30],
       "supportedFormats": ["MP4", "MOV"]
     },
-    "textSpecs": { "primaryText": 125, "headline": 27, "description": 27 }
+    "textSpecs": { "primaryText": 125, "headline": 40, "description": 30 },
+    "notes": "H.264 video + AAC audio recommended. 1:1 for desktop+mobile, 4:5 for mobile only. Max 4GB file size."
+  },
+  {
+    "id": "social-meta-stories-image",
+    "creativeType": "Social - Meta Stories Image",
+    "category": "Social",
+    "platform": "Meta",
+    "placement": "Stories",
+    "dimensions": [
+      { "width": 1080, "height": 1920, "label": "9:16 Full Screen", "supportsRetina": false }
+    ],
+    "supportedFormats": ["JPG", "PNG"],
+    "fileSizeLimit": { "maxKB": 30720 },
+    "videoSpecs": null,
+    "textSpecs": { "primaryText": 125, "headline": 40 },
+    "notes": "Shown for 5 seconds. Avoid placing key content in top/bottom 250px safe zones. Min resolution 600x1067."
+  },
+  {
+    "id": "social-meta-stories-video",
+    "creativeType": "Social - Meta Stories Video",
+    "category": "Social",
+    "platform": "Meta",
+    "placement": "Stories",
+    "dimensions": [
+      { "width": 1080, "height": 1920, "label": "9:16 Full Screen", "supportsRetina": false }
+    ],
+    "supportedFormats": ["MP4", "MOV", "GIF"],
+    "fileSizeLimit": { "maxKB": 4194304 },
+    "videoSpecs": {
+      "minDurationSeconds": 1,
+      "maxDurationSeconds": 120,
+      "recommendedDurationSeconds": [15],
+      "supportedFormats": ["MP4", "MOV"]
+    },
+    "textSpecs": { "primaryText": 125, "headline": 40 },
+    "notes": "Plays up to 10s per Story card (up to 3 cards). Keep under 15s for best performance. Avoid top/bottom 250px safe zones."
+  },
+  {
+    "id": "social-meta-reels",
+    "creativeType": "Social - Meta Reels",
+    "category": "Social",
+    "platform": "Meta",
+    "placement": "Reels",
+    "dimensions": [
+      { "width": 1080, "height": 1920, "label": "9:16 Full Screen", "supportsRetina": false }
+    ],
+    "supportedFormats": ["MP4", "MOV"],
+    "fileSizeLimit": { "maxKB": 4194304 },
+    "videoSpecs": {
+      "minDurationSeconds": 1,
+      "maxDurationSeconds": 90,
+      "recommendedDurationSeconds": [15, 30],
+      "supportedFormats": ["MP4", "MOV"]
+    },
+    "notes": "9:16 vertical full-screen only. CTA button appears at bottom. Add on-screen captions (no auto-captioning). Max 4GB."
   },
   {
     "id": "social-snap",
@@ -327,23 +387,6 @@
   },
 
   {
-    "id": "social-meta-feed-vertical",
-    "creativeType": "Social - Meta Feed (Vertical 4:5)",
-    "category": "Social",
-    "platform": "Meta",
-    "placement": "Feed",
-    "dimensions": [{ "width": 1080, "height": 1350, "label": "4:5 Feed", "supportsRetina": false }],
-    "supportedFormats": ["JPG", "PNG", "GIF", "MP4", "MOV"],
-    "fileSizeLimit": { "maxKB": 30720 },
-    "videoSpecs": {
-      "minDurationSeconds": 1,
-      "maxDurationSeconds": 14460,
-      "supportedFormats": ["MP4", "MOV"]
-    },
-    "textSpecs": { "primaryText": 125, "headline": 40, "description": 25 },
-    "notes": "4:5 vertical takes up more screen space on mobile. Not available for desktop placement."
-  },
-  {
     "id": "social-meta-carousel",
     "creativeType": "Social - Meta Carousel",
     "category": "Social",
@@ -392,8 +435,8 @@
     "supportedFormats": ["JPG", "PNG"],
     "fileSizeLimit": { "maxKB": 30720 },
     "videoSpecs": null,
-    "textSpecs": { "headline": 40 },
-    "notes": "Desktop only placement. Image-only, no video support."
+    "textSpecs": { "primaryText": 125, "headline": 25, "description": 30 },
+    "notes": "Desktop only placement. Image-only, no video support. Aspect ratio cropped to 1.91:1 when link is present."
   },
 
   {
