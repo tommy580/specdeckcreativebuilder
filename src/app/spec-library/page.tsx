@@ -81,7 +81,7 @@ export default function SpecLibraryPage() {
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Spec Library</h1>
           <p className="mt-1 text-sm text-gray-500">
-            Browse and manage InMarket creative ad specifications
+            Browse and manage Five Eighty creative ad specifications
           </p>
         </div>
       </div>
@@ -170,7 +170,7 @@ export default function SpecLibraryPage() {
                                   </span>
                                 )}
                                 {dim.supportsRetina && (
-                                  <span className="ml-1 text-inmarket">@2x</span>
+                                  <span className="ml-1 text-fiveeighty">@2x</span>
                                 )}
                               </div>
                             ))}

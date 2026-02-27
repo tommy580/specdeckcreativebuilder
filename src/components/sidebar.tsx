@@ -18,12 +18,12 @@ export function Sidebar() {
   return (
     <aside className="flex h-screen w-64 flex-col border-r bg-gray-900 text-white">
       <div className="flex h-16 items-center gap-2 border-b border-gray-700 px-6">
-        <div className="h-8 w-8 rounded-md bg-inmarket flex items-center justify-center font-bold text-white text-sm">
-          IM
+        <div className="h-8 w-8 rounded-md bg-fiveeighty flex items-center justify-center font-bold text-white text-sm">
+          580
         </div>
         <div>
           <h1 className="text-sm font-semibold">SpecDeck</h1>
-          <p className="text-xs text-gray-400">InMarket Creative Specs</p>
+          <p className="text-xs text-gray-400">Five Eighty Creative Specs</p>
         </div>
       </div>
       <nav className="flex-1 space-y-1 p-4">
@@ -38,7 +38,7 @@ export function Sidebar() {
               className={cn(
                 "flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors",
                 isActive
-                  ? "bg-inmarket/20 text-inmarket"
+                  ? "bg-fiveeighty/20 text-fiveeighty"
                   : "text-gray-300 hover:bg-gray-800 hover:text-white"
               )}
             >
@@ -49,7 +49,7 @@ export function Sidebar() {
         })}
       </nav>
       <div className="border-t border-gray-700 p-4">
-        <p className="text-xs text-gray-500">InMarket 2025 Specs</p>
+        <p className="text-xs text-gray-500">Five Eighty 2025 Specs</p>
       </div>
     </aside>
   );

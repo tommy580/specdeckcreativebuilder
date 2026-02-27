@@ -249,10 +249,10 @@ export default function AssetQAPage() {
             <div
               className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium ${
                 step === s.id
-                  ? "bg-inmarket text-white"
+                  ? "bg-fiveeighty text-white"
                   : ["select-specs", "upload", "report"].indexOf(step) >
                     ["select-specs", "upload", "report"].indexOf(s.id as typeof step)
-                  ? "bg-inmarket/20 text-inmarket"
+                  ? "bg-fiveeighty/20 text-fiveeighty"
                   : "bg-gray-200 text-gray-500"
               }`}
             >

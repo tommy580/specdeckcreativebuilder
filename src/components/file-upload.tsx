@@ -62,8 +62,8 @@ export function FileUpload({
       className={cn(
         "relative flex flex-col items-center justify-center rounded-lg border-2 border-dashed p-8 transition-colors cursor-pointer",
         isDragging
-          ? "border-inmarket bg-inmarket/5"
-          : "border-gray-300 hover:border-inmarket/50 hover:bg-gray-50",
+          ? "border-fiveeighty bg-fiveeighty/5"
+          : "border-gray-300 hover:border-fiveeighty/50 hover:bg-gray-50",
         className
       )}
       onDragOver={handleDragOver}

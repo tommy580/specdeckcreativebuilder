@@ -14,15 +14,15 @@ export default function HomePage() {
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900">SpecDeck</h1>
         <p className="mt-2 text-gray-500">
-          InMarket Creative Ad Specs & QA Platform
+          Five Eighty Creative Ad Specs & QA Platform
         </p>
       </div>
 
       <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Card>
           <CardContent className="flex items-center gap-4 p-6">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-inmarket/10">
-              <Library className="h-6 w-6 text-inmarket" />
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-fiveeighty/10">
+              <Library className="h-6 w-6 text-fiveeighty" />
             </div>
             <div>
               <p className="text-2xl font-bold">{specCount}</p>
@@ -59,8 +59,8 @@ export default function HomePage() {
           <Card className="group cursor-pointer transition-shadow hover:shadow-md">
             <CardHeader>
               <div className="flex items-center justify-between">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-inmarket/10">
-                  <FileSpreadsheet className="h-6 w-6 text-inmarket" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-fiveeighty/10">
+                  <FileSpreadsheet className="h-6 w-6 text-fiveeighty" />
                 </div>
                 <ArrowRight className="h-5 w-5 text-gray-400 transition-transform group-hover:translate-x-1" />
               </div>

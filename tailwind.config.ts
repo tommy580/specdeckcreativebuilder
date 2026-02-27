@@ -43,7 +43,7 @@ const config: Config = {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
         },
-        inmarket: {
+        fiveeighty: {
           DEFAULT: "#7AB648",
           light: "#8FC95E",
           dark: "#5A8A35",

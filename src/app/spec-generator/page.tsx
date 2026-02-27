@@ -230,10 +230,10 @@ export default function SpecGeneratorPage() {
             <div
               className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium ${
                 step === s.id
-                  ? "bg-inmarket text-white"
+                  ? "bg-fiveeighty text-white"
                   : ["upload", "review", "specs"].indexOf(step) >
                     ["upload", "review", "specs"].indexOf(s.id as typeof step)
-                  ? "bg-inmarket/20 text-inmarket"
+                  ? "bg-fiveeighty/20 text-fiveeighty"
                   : "bg-gray-200 text-gray-500"
               }`}
             >
@@ -535,7 +535,7 @@ export default function SpecGeneratorPage() {
                               }}
                             >
                               {copiedId === rowId ? (
-                                <Check className="h-4 w-4 text-inmarket" />
+                                <Check className="h-4 w-4 text-fiveeighty" />
                               ) : (
                                 <Copy className="h-4 w-4" />
                               )}

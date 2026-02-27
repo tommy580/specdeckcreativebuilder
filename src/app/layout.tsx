@@ -4,8 +4,8 @@ import { Sidebar } from "@/components/sidebar";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  title: "SpecDeck - InMarket Creative Ad Specs",
-  description: "Creative ad spec generator and asset QA checker for InMarket campaigns",
+  title: "SpecDeck - Five Eighty Creative Ad Specs",
+  description: "Creative ad spec generator and asset QA checker for Five Eighty campaigns",
 };
 
 export default function RootLayout({
