@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Sidebar } from "@/components/sidebar";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "SpecDeck - InMarket Creative Ad Specs",
@@ -15,12 +16,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-sans antialiased">
-        <div className="flex h-screen">
-          <Sidebar />
-          <main className="flex-1 overflow-auto bg-gray-50">
-            {children}
-          </main>
-        </div>
+        <Providers>
+          <div className="flex h-screen">
+            <Sidebar />
+            <main className="flex-1 overflow-auto bg-gray-50">
+              {children}
+            </main>
+          </div>
+        </Providers>
       </body>
     </html>
   );

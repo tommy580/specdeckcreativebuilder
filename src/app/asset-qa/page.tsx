@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
+import { useAppState, FileMapping } from "@/context/app-state";
 import { FileUpload } from "@/components/file-upload";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,38 +13,24 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { CreativeSpec, AssetQAResult } from "@/lib/types";
 import { parseDimensionFromFilename } from "@/lib/asset-validator";
 import { CheckCircle, XCircle, AlertTriangle, Download, FileCheck } from "lucide-react";
 
-type Step = "select-specs" | "upload" | "report";
-type Filter = "all" | "pass" | "fail";
-
-interface FileMapping {
-  file: File;
-  specId: string;
-  dimension: string;
-}
-
 export default function AssetQAPage() {
-  const [step, setStep] = useState<Step>("select-specs");
-  const [specs, setSpecs] = useState<CreativeSpec[]>([]);
-  const [selectedSpecId, setSelectedSpecId] = useState<string>("");
-  const [selectedDimension, setSelectedDimension] = useState<string>("");
-  const [targetSpecs, setTargetSpecs] = useState<
-    { specId: string; dimension: string; label: string }[]
-  >([]);
-  const [fileMappings, setFileMappings] = useState<FileMapping[]>([]);
-  const [results, setResults] = useState<AssetQAResult[]>([]);
-  const [filter, setFilter] = useState<Filter>("all");
+  const { specs, assetQA, setAssetQA } = useAppState();
+
+  // Transient UI state
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    fetch("/api/specs")
-      .then((res) => res.json())
-      .then((data) => setSpecs(data))
-      .catch(() => {});
-  }, []);
+  const {
+    step,
+    selectedSpecId,
+    selectedDimension,
+    targetSpecs,
+    fileMappings,
+    results,
+    filter,
+  } = assetQA;
 
   const selectedSpec = specs.find((s) => s.id === selectedSpecId);
 
@@ -57,24 +44,29 @@ export default function AssetQAPage() {
     );
     if (exists) return;
 
-    setTargetSpecs((prev) => [
+    setAssetQA((prev) => ({
       ...prev,
-      {
-        specId: selectedSpecId,
-        dimension: selectedDimension,
-        label: `${spec.creativeType} @ ${selectedDimension}`,
-      },
-    ]);
+      targetSpecs: [
+        ...prev.targetSpecs,
+        {
+          specId: selectedSpecId,
+          dimension: selectedDimension,
+          label: `${spec.creativeType} @ ${selectedDimension}`,
+        },
+      ],
+    }));
   };
 
   const removeTargetSpec = (index: number) => {
-    setTargetSpecs((prev) => prev.filter((_, i) => i !== index));
+    setAssetQA((prev) => ({
+      ...prev,
+      targetSpecs: prev.targetSpecs.filter((_, i) => i !== index),
+    }));
   };
 
   const handleFilesSelected = useCallback(
     (files: File[]) => {
       const newMappings: FileMapping[] = files.map((file) => {
-        // Try to auto-match by filename dimension pattern
         const detectedDim = parseDimensionFromFilename(file.name);
         let autoSpec = "";
         let autoDim = "";
@@ -87,7 +79,6 @@ export default function AssetQAPage() {
           }
         }
 
-        // Default to first target spec if no auto-match
         if (!autoSpec && targetSpecs.length > 0) {
           autoSpec = targetSpecs[0].specId;
           autoDim = targetSpecs[0].dimension;
@@ -96,19 +87,28 @@ export default function AssetQAPage() {
         return { file, specId: autoSpec, dimension: autoDim };
       });
 
-      setFileMappings((prev) => [...prev, ...newMappings]);
+      setAssetQA((prev) => ({
+        ...prev,
+        fileMappings: [...prev.fileMappings, ...newMappings],
+      }));
     },
-    [targetSpecs]
+    [targetSpecs, setAssetQA]
   );
 
   const updateMapping = (index: number, specId: string, dimension: string) => {
-    setFileMappings((prev) =>
-      prev.map((m, i) => (i === index ? { ...m, specId, dimension } : m))
-    );
+    setAssetQA((prev) => ({
+      ...prev,
+      fileMappings: prev.fileMappings.map((m, i) =>
+        i === index ? { ...m, specId, dimension } : m
+      ),
+    }));
   };
 
   const removeFile = (index: number) => {
-    setFileMappings((prev) => prev.filter((_, i) => i !== index));
+    setAssetQA((prev) => ({
+      ...prev,
+      fileMappings: prev.fileMappings.filter((_, i) => i !== index),
+    }));
   };
 
   const runValidation = async () => {
@@ -130,8 +130,11 @@ export default function AssetQAPage() {
         body: formData,
       });
       const data = await res.json();
-      setResults(data.results || []);
-      setStep("report");
+      setAssetQA((prev) => ({
+        ...prev,
+        results: data.results || [],
+        step: "report",
+      }));
     } catch {
       alert("Validation failed. Please try again.");
     }
@@ -197,11 +200,15 @@ export default function AssetQAPage() {
   };
 
   const handleReset = () => {
-    setStep("select-specs");
-    setTargetSpecs([]);
-    setFileMappings([]);
-    setResults([]);
-    setFilter("all");
+    setAssetQA({
+      step: "select-specs",
+      selectedSpecId: "",
+      selectedDimension: "",
+      targetSpecs: [],
+      fileMappings: [],
+      results: [],
+      filter: "all",
+    });
   };
 
   const getCheckIcon = (status: "pass" | "fail" | "warning") => {
@@ -244,7 +251,7 @@ export default function AssetQAPage() {
                 step === s.id
                   ? "bg-inmarket text-white"
                   : ["select-specs", "upload", "report"].indexOf(step) >
-                    ["select-specs", "upload", "report"].indexOf(s.id as Step)
+                    ["select-specs", "upload", "report"].indexOf(s.id as typeof step)
                   ? "bg-inmarket/20 text-inmarket"
                   : "bg-gray-200 text-gray-500"
               }`}
@@ -281,8 +288,11 @@ export default function AssetQAPage() {
                   <Select
                     value={selectedSpecId}
                     onValueChange={(v) => {
-                      setSelectedSpecId(v);
-                      setSelectedDimension("");
+                      setAssetQA((prev) => ({
+                        ...prev,
+                        selectedSpecId: v,
+                        selectedDimension: "",
+                      }));
                     }}
                   >
                     <SelectTrigger>
@@ -305,7 +315,9 @@ export default function AssetQAPage() {
                     </label>
                     <Select
                       value={selectedDimension}
-                      onValueChange={setSelectedDimension}
+                      onValueChange={(v) =>
+                        setAssetQA((prev) => ({ ...prev, selectedDimension: v }))
+                      }
                     >
                       <SelectTrigger>
                         <SelectValue placeholder="Select dimension..." />
@@ -356,7 +368,9 @@ export default function AssetQAPage() {
                     ))}
                     <Button
                       className="mt-4"
-                      onClick={() => setStep("upload")}
+                      onClick={() =>
+                        setAssetQA((prev) => ({ ...prev, step: "upload" }))
+                      }
                     >
                       Continue to Upload
                     </Button>
@@ -488,21 +502,27 @@ export default function AssetQAPage() {
               <Button
                 variant={filter === "all" ? "default" : "outline"}
                 size="sm"
-                onClick={() => setFilter("all")}
+                onClick={() =>
+                  setAssetQA((prev) => ({ ...prev, filter: "all" }))
+                }
               >
                 Show All
               </Button>
               <Button
                 variant={filter === "fail" ? "default" : "outline"}
                 size="sm"
-                onClick={() => setFilter("fail")}
+                onClick={() =>
+                  setAssetQA((prev) => ({ ...prev, filter: "fail" }))
+                }
               >
                 Failures Only
               </Button>
               <Button
                 variant={filter === "pass" ? "default" : "outline"}
                 size="sm"
-                onClick={() => setFilter("pass")}
+                onClick={() =>
+                  setAssetQA((prev) => ({ ...prev, filter: "pass" }))
+                }
               >
                 Passes Only
               </Button>

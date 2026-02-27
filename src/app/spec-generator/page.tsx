@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
+import { useAppState } from "@/context/app-state";
 import { FileUpload } from "@/components/file-upload";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -20,41 +21,25 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { CreativeSpec, MediaPlanLineItem, MediaPlanMetadata, SpecRequirement } from "@/lib/types";
 import { generateSpecRequirements } from "@/lib/spec-engine";
 import { formatFileSize } from "@/lib/utils";
 import { FileSpreadsheet, Download, ChevronDown, ChevronRight, Copy, Check, AlertTriangle } from "lucide-react";
 
-type Step = "upload" | "review" | "specs";
-
 export default function SpecGeneratorPage() {
-  const [step, setStep] = useState<Step>("upload");
-  const [file, setFile] = useState<File | null>(null);
-  const [sheets, setSheets] = useState<string[]>([]);
-  const [selectedSheet, setSelectedSheet] = useState<string>("");
-  const [metadata, setMetadata] = useState<MediaPlanMetadata | null>(null);
-  const [lineItems, setLineItems] = useState<MediaPlanLineItem[]>([]);
-  const [warnings, setWarnings] = useState<string[]>([]);
-  const [specs, setSpecs] = useState<CreativeSpec[]>([]);
-  const [specRequirements, setSpecRequirements] = useState<SpecRequirement[]>([]);
-  const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
+  const { specs, specGen, setSpecGen } = useAppState();
+
+  // Transient UI state (doesn't need to persist across tabs)
   const [loading, setLoading] = useState(false);
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
-  useEffect(() => {
-    fetch("/api/specs")
-      .then((res) => res.json())
-      .then((data) => setSpecs(data))
-      .catch(() => {});
-  }, []);
+  const { step, file, sheets, selectedSheet, metadata, lineItems, warnings, specRequirements, expandedRows } = specGen;
 
   const handleFileSelected = useCallback(async (files: File[]) => {
     const f = files[0];
     if (!f) return;
-    setFile(f);
+    setSpecGen((prev) => ({ ...prev, file: f }));
     setLoading(true);
 
-    // Get sheet names
     const formData = new FormData();
     formData.append("file", f);
     formData.append("action", "sheets");
@@ -63,16 +48,23 @@ export default function SpecGeneratorPage() {
       const res = await fetch("/api/parse-media-plan", { method: "POST", body: formData });
       const data = await res.json();
       if (data.sheets && data.sheets.length > 1) {
-        setSheets(data.sheets);
-        setSelectedSheet(data.sheets[0]);
+        setSpecGen((prev) => ({
+          ...prev,
+          sheets: data.sheets,
+          selectedSheet: data.sheets[0],
+        }));
       } else if (data.sheets && data.sheets.length === 1) {
-        setSelectedSheet(data.sheets[0]);
+        setSpecGen((prev) => ({ ...prev, selectedSheet: data.sheets[0] }));
         await parsePlan(f, data.sheets[0]);
       }
     } catch {
-      setWarnings(["Failed to read file. Please ensure it's a valid Excel/CSV file."]);
+      setSpecGen((prev) => ({
+        ...prev,
+        warnings: ["Failed to read file. Please ensure it's a valid Excel/CSV file."],
+      }));
     }
     setLoading(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const parsePlan = async (f: File, sheet: string) => {
@@ -84,12 +76,18 @@ export default function SpecGeneratorPage() {
     try {
       const res = await fetch("/api/parse-media-plan", { method: "POST", body: formData });
       const data = await res.json();
-      setMetadata(data.metadata);
-      setLineItems(data.lineItems);
-      setWarnings(data.warnings || []);
-      setStep("review");
+      setSpecGen((prev) => ({
+        ...prev,
+        metadata: data.metadata,
+        lineItems: data.lineItems,
+        warnings: data.warnings || [],
+        step: "review",
+      }));
     } catch {
-      setWarnings(["Failed to parse media plan."]);
+      setSpecGen((prev) => ({
+        ...prev,
+        warnings: ["Failed to parse media plan."],
+      }));
     }
     setLoading(false);
   };
@@ -102,20 +100,23 @@ export default function SpecGeneratorPage() {
 
   const handleGenerateSpecs = () => {
     const requirements = generateSpecRequirements(lineItems, specs);
-    setSpecRequirements(requirements);
-    setStep("specs");
+    setSpecGen((prev) => ({
+      ...prev,
+      specRequirements: requirements,
+      step: "specs",
+    }));
   };
 
   const toggleRow = (id: string) => {
-    setExpandedRows((prev) => {
-      const next = new Set(prev);
+    setSpecGen((prev) => {
+      const next = new Set(prev.expandedRows);
       if (next.has(id)) next.delete(id);
       else next.add(id);
-      return next;
+      return { ...prev, expandedRows: next };
     });
   };
 
-  const copySpec = (req: SpecRequirement) => {
+  const copySpec = (req: typeof specRequirements[0]) => {
     const text = [
       `Dimension: ${req.dimension}`,
       `Creative Type: ${req.matchedSpec?.creativeType || "Unknown"}`,
@@ -189,15 +190,17 @@ export default function SpecGeneratorPage() {
   };
 
   const handleReset = () => {
-    setStep("upload");
-    setFile(null);
-    setSheets([]);
-    setSelectedSheet("");
-    setMetadata(null);
-    setLineItems([]);
-    setWarnings([]);
-    setSpecRequirements([]);
-    setExpandedRows(new Set());
+    setSpecGen({
+      step: "upload",
+      file: null,
+      sheets: [],
+      selectedSheet: "",
+      metadata: null,
+      lineItems: [],
+      warnings: [],
+      specRequirements: [],
+      expandedRows: new Set(),
+    });
   };
 
   return (
@@ -229,7 +232,7 @@ export default function SpecGeneratorPage() {
                 step === s.id
                   ? "bg-inmarket text-white"
                   : ["upload", "review", "specs"].indexOf(step) >
-                    ["upload", "review", "specs"].indexOf(s.id as Step)
+                    ["upload", "review", "specs"].indexOf(s.id as typeof step)
                   ? "bg-inmarket/20 text-inmarket"
                   : "bg-gray-200 text-gray-500"
               }`}
@@ -271,7 +274,12 @@ export default function SpecGeneratorPage() {
                 <p className="mb-3 text-sm text-gray-500">
                   Multiple sheets detected. Select the one containing the media plan:
                 </p>
-                <Select value={selectedSheet} onValueChange={setSelectedSheet}>
+                <Select
+                  value={selectedSheet}
+                  onValueChange={(v) =>
+                    setSpecGen((prev) => ({ ...prev, selectedSheet: v }))
+                  }
+                >
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>

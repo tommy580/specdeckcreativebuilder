@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { CreativeSpec } from "@/lib/types";
+import { useAppState } from "@/context/app-state";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -20,20 +19,9 @@ const CATEGORY_ORDER = [
 ];
 
 export default function SpecLibraryPage() {
-  const [specs, setSpecs] = useState<CreativeSpec[]>([]);
-  const [search, setSearch] = useState("");
-  const [expandedSpecs, setExpandedSpecs] = useState<Set<string>>(new Set());
-  const [loading, setLoading] = useState(true);
+  const { specs, setSpecs, specsLoaded, specLib, setSpecLib } = useAppState();
 
-  useEffect(() => {
-    fetch("/api/specs")
-      .then((res) => res.json())
-      .then((data) => {
-        setSpecs(data);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
+  const { search, expandedSpecs } = specLib;
 
   const filteredSpecs = specs.filter(
     (s) =>
@@ -50,18 +38,18 @@ export default function SpecLibraryPage() {
       }
       return acc;
     },
-    {} as Record<string, CreativeSpec[]>
+    {} as Record<string, typeof specs>
   );
 
   const toggleSpec = (id: string) => {
-    setExpandedSpecs((prev) => {
-      const next = new Set(prev);
+    setSpecLib((prev) => {
+      const next = new Set(prev.expandedSpecs);
       if (next.has(id)) {
         next.delete(id);
       } else {
         next.add(id);
       }
-      return next;
+      return { ...prev, expandedSpecs: next };
     });
   };
 
@@ -77,7 +65,7 @@ export default function SpecLibraryPage() {
     }
   };
 
-  if (loading) {
+  if (!specsLoaded) {
     return (
       <div className="flex items-center justify-center p-8">
         <p className="text-gray-500">Loading spec library...</p>
@@ -101,7 +89,9 @@ export default function SpecLibraryPage() {
         <Input
           placeholder="Search specs by type, category, or platform..."
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) =>
+            setSpecLib((prev) => ({ ...prev, search: e.target.value }))
+          }
           className="pl-10"
         />
       </div>

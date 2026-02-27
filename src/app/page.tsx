@@ -3,18 +3,11 @@
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileSpreadsheet, CheckCircle, Library, ArrowRight } from "lucide-react";
-import { useEffect, useState } from "react";
-import { CreativeSpec } from "@/lib/types";
+import { useAppState } from "@/context/app-state";
 
 export default function HomePage() {
-  const [specCount, setSpecCount] = useState(0);
-
-  useEffect(() => {
-    fetch("/api/specs")
-      .then((res) => res.json())
-      .then((specs: CreativeSpec[]) => setSpecCount(specs.length))
-      .catch(() => {});
-  }, []);
+  const { specs } = useAppState();
+  const specCount = specs.length;
 
   return (
     <div className="p-8">
