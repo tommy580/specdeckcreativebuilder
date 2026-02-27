@@ -226,5 +226,289 @@
       "recommendedDurationSeconds": [15, 30],
       "supportedFormats": ["MOV", "MP4"]
     }
+  },
+
+  {
+    "id": "pmax-image-landscape",
+    "creativeType": "PMax - Image (Landscape 1.91:1)",
+    "category": "Google PMax",
+    "platform": "Google",
+    "dimensions": [
+      { "width": 1200, "height": 628, "label": "Recommended", "supportsRetina": false },
+      { "width": 600, "height": 314, "label": "Minimum", "supportsRetina": false }
+    ],
+    "supportedFormats": ["JPG", "PNG"],
+    "fileSizeLimit": { "maxKB": 5120 },
+    "videoSpecs": null,
+    "textSpecs": { "headline": 30, "description": 90 },
+    "notes": "Up to 20 images per asset group. Keep subject in center 80% safe zone."
+  },
+  {
+    "id": "pmax-image-square",
+    "creativeType": "PMax - Image (Square 1:1)",
+    "category": "Google PMax",
+    "platform": "Google",
+    "dimensions": [
+      { "width": 1200, "height": 1200, "label": "Recommended", "supportsRetina": false },
+      { "width": 300, "height": 300, "label": "Minimum", "supportsRetina": false }
+    ],
+    "supportedFormats": ["JPG", "PNG"],
+    "fileSizeLimit": { "maxKB": 5120 },
+    "videoSpecs": null,
+    "textSpecs": { "headline": 30, "description": 90 },
+    "notes": "Up to 20 images per asset group. Keep subject in center 80% safe zone."
+  },
+  {
+    "id": "pmax-image-portrait",
+    "creativeType": "PMax - Image (Portrait 4:5)",
+    "category": "Google PMax",
+    "platform": "Google",
+    "dimensions": [
+      { "width": 960, "height": 1200, "label": "Recommended", "supportsRetina": false },
+      { "width": 480, "height": 600, "label": "Minimum", "supportsRetina": false }
+    ],
+    "supportedFormats": ["JPG", "PNG"],
+    "fileSizeLimit": { "maxKB": 5120 },
+    "videoSpecs": null,
+    "textSpecs": { "headline": 30, "description": 90 },
+    "notes": "Up to 20 images per asset group. Keep subject in center 80% safe zone."
+  },
+  {
+    "id": "pmax-image-vertical",
+    "creativeType": "PMax - Image (Vertical 9:16)",
+    "category": "Google PMax",
+    "platform": "Google",
+    "dimensions": [
+      { "width": 1080, "height": 1920, "label": "Recommended", "supportsRetina": false },
+      { "width": 600, "height": 1067, "label": "Minimum", "supportsRetina": false }
+    ],
+    "supportedFormats": ["JPG", "PNG"],
+    "fileSizeLimit": { "maxKB": 5120 },
+    "videoSpecs": null,
+    "textSpecs": { "headline": 30, "description": 90 },
+    "notes": "Vertical 9:16 format for YouTube Shorts and Discover placements."
+  },
+  {
+    "id": "pmax-video",
+    "creativeType": "PMax - Video",
+    "category": "Google PMax",
+    "platform": "Google",
+    "dimensions": [
+      { "width": 1920, "height": 1080, "label": "Landscape 16:9", "supportsRetina": false },
+      { "width": 1080, "height": 1080, "label": "Square 1:1", "supportsRetina": false },
+      { "width": 1080, "height": 1920, "label": "Vertical 9:16", "supportsRetina": false }
+    ],
+    "supportedFormats": ["MP4", "MOV"],
+    "fileSizeLimit": { "maxKB": 256000 },
+    "videoSpecs": {
+      "minDurationSeconds": 10,
+      "maxDurationSeconds": 60,
+      "recommendedDurationSeconds": [15, 30],
+      "supportedFormats": ["MP4", "MOV"]
+    },
+    "textSpecs": { "headline": 30, "description": 90 },
+    "notes": "Videos must be hosted on YouTube. Include horizontal, vertical, and square versions. At least one vertical video 10-60s for YouTube Shorts."
+  },
+  {
+    "id": "pmax-logo",
+    "creativeType": "PMax - Logo",
+    "category": "Google PMax",
+    "platform": "Google",
+    "dimensions": [
+      { "width": 1200, "height": 1200, "label": "Square (Recommended)", "supportsRetina": false },
+      { "width": 128, "height": 128, "label": "Square (Minimum)", "supportsRetina": false },
+      { "width": 1200, "height": 300, "label": "Landscape (Recommended)", "supportsRetina": false },
+      { "width": 512, "height": 128, "label": "Landscape (Minimum)", "supportsRetina": false }
+    ],
+    "supportedFormats": ["JPG", "PNG"],
+    "fileSizeLimit": { "maxKB": 5120 },
+    "videoSpecs": null,
+    "notes": "Up to 5 logos per asset group. Square and landscape versions recommended."
+  },
+
+  {
+    "id": "social-meta-feed-vertical",
+    "creativeType": "Social - Meta Feed (Vertical 4:5)",
+    "category": "Social",
+    "platform": "Meta",
+    "placement": "Feed",
+    "dimensions": [{ "width": 1080, "height": 1350, "label": "4:5 Feed", "supportsRetina": false }],
+    "supportedFormats": ["JPG", "PNG", "GIF", "MP4", "MOV"],
+    "fileSizeLimit": { "maxKB": 30720 },
+    "videoSpecs": {
+      "minDurationSeconds": 1,
+      "maxDurationSeconds": 14460,
+      "supportedFormats": ["MP4", "MOV"]
+    },
+    "textSpecs": { "primaryText": 125, "headline": 40, "description": 25 },
+    "notes": "4:5 vertical takes up more screen space on mobile. Not available for desktop placement."
+  },
+  {
+    "id": "social-meta-carousel",
+    "creativeType": "Social - Meta Carousel",
+    "category": "Social",
+    "platform": "Meta",
+    "placement": "Feed",
+    "dimensions": [{ "width": 1080, "height": 1080, "label": "1:1 Carousel", "supportsRetina": false }],
+    "supportedFormats": ["JPG", "PNG", "GIF", "MP4", "MOV"],
+    "fileSizeLimit": { "maxKB": 30720 },
+    "videoSpecs": {
+      "minDurationSeconds": 1,
+      "maxDurationSeconds": 240,
+      "supportedFormats": ["MP4", "MOV"]
+    },
+    "textSpecs": { "primaryText": 80, "headline": 45, "description": 18 },
+    "notes": "2-10 carousel cards. Each card can be image or video."
+  },
+  {
+    "id": "social-meta-instream-video",
+    "creativeType": "Social - Meta In-Stream Video",
+    "category": "Social",
+    "platform": "Meta",
+    "placement": "In-Stream",
+    "dimensions": [
+      { "width": 1920, "height": 1080, "label": "16:9 Landscape", "supportsRetina": false },
+      { "width": 1080, "height": 1080, "label": "1:1 Square", "supportsRetina": false }
+    ],
+    "supportedFormats": ["MP4", "MOV"],
+    "fileSizeLimit": { "maxKB": 4194304 },
+    "videoSpecs": {
+      "minDurationSeconds": 5,
+      "maxDurationSeconds": 600,
+      "recommendedDurationSeconds": [15],
+      "frameRates": [30],
+      "supportedFormats": ["MP4", "MOV"]
+    },
+    "textSpecs": { "primaryText": 125, "headline": 40 },
+    "notes": "H.264 compression with AAC audio recommended. Captions boost view time by 12%."
+  },
+  {
+    "id": "social-meta-right-column",
+    "creativeType": "Social - Meta Right Column",
+    "category": "Social",
+    "platform": "Meta",
+    "placement": "Right Column",
+    "dimensions": [{ "width": 1080, "height": 1080, "label": "1:1 Square", "supportsRetina": false }],
+    "supportedFormats": ["JPG", "PNG"],
+    "fileSizeLimit": { "maxKB": 30720 },
+    "videoSpecs": null,
+    "textSpecs": { "headline": 40 },
+    "notes": "Desktop only placement. Image-only, no video support."
+  },
+
+  {
+    "id": "ctv-hulu",
+    "creativeType": "CTV - Hulu",
+    "category": "CTV",
+    "platform": "Hulu",
+    "dimensions": [{ "width": 1920, "height": 1080, "label": "1080p 16:9", "supportsRetina": false }],
+    "supportedFormats": ["MP4", "MOV"],
+    "fileSizeLimit": { "maxKB": 1048576 },
+    "videoSpecs": {
+      "maxDurationSeconds": 30,
+      "recommendedDurationSeconds": [15, 30],
+      "frameRates": [23.98, 29.97, 30],
+      "supportedFormats": ["MP4", "MOV"]
+    },
+    "notes": "H.264 codec required. 15-30 Mbps bitrate recommended. Progressive scan only."
+  },
+  {
+    "id": "ctv-roku",
+    "creativeType": "CTV - Roku",
+    "category": "CTV",
+    "platform": "Roku",
+    "dimensions": [{ "width": 1920, "height": 1080, "label": "1080p 16:9", "supportsRetina": false }],
+    "supportedFormats": ["MP4", "MOV"],
+    "fileSizeLimit": { "maxKB": 1048576 },
+    "videoSpecs": {
+      "maxDurationSeconds": 30,
+      "recommendedDurationSeconds": [15, 30],
+      "frameRates": [23.98, 29.97, 30],
+      "supportedFormats": ["MP4", "MOV"]
+    },
+    "notes": "H.264 codec required. 15-30 Mbps bitrate recommended. VAST 2.0 ad serving."
+  },
+  {
+    "id": "ctv-amazon-fire",
+    "creativeType": "CTV - Amazon Fire TV",
+    "category": "CTV",
+    "platform": "Amazon",
+    "dimensions": [{ "width": 1920, "height": 1080, "label": "1080p 16:9", "supportsRetina": false }],
+    "supportedFormats": ["MP4", "MOV", "MPEG-2"],
+    "fileSizeLimit": { "maxKB": 524288 },
+    "videoSpecs": {
+      "maxDurationSeconds": 30,
+      "recommendedDurationSeconds": [15, 30],
+      "frameRates": [23.98, 29.97, 30],
+      "supportedFormats": ["MP4", "MOV", "MPEG-2"]
+    },
+    "notes": "Accepts MPEG-2 in addition to H.264. 15-20 Mbps bitrate recommended."
+  },
+  {
+    "id": "ctv-peacock",
+    "creativeType": "CTV - Peacock",
+    "category": "CTV",
+    "platform": "Peacock",
+    "dimensions": [{ "width": 1920, "height": 1080, "label": "1080p 16:9", "supportsRetina": false }],
+    "supportedFormats": ["MP4", "MOV"],
+    "fileSizeLimit": { "maxKB": 1048576 },
+    "videoSpecs": {
+      "maxDurationSeconds": 30,
+      "recommendedDurationSeconds": [15, 30],
+      "frameRates": [23.98, 29.97, 30],
+      "supportedFormats": ["MP4", "MOV"]
+    },
+    "notes": "H.264 codec required. Requires creative pre-approval. 15-30 Mbps bitrate."
+  },
+
+  {
+    "id": "instacart-shoppable-display",
+    "creativeType": "Instacart - Shoppable Display",
+    "category": "Instacart",
+    "platform": "Instacart",
+    "placement": "Storefront & Search",
+    "dimensions": [
+      { "width": 2400, "height": 600, "label": "Desktop Banner", "supportsRetina": false },
+      { "width": 1200, "height": 600, "label": "Mobile Banner", "supportsRetina": false }
+    ],
+    "supportedFormats": ["JPG", "PNG"],
+    "fileSizeLimit": { "maxKB": 1024 },
+    "videoSpecs": null,
+    "notes": "Both desktop and mobile banners required. Submit creatives 3+ days before launch. Image paired with product carousel (3 UPCs mobile, 5 desktop)."
+  },
+  {
+    "id": "instacart-display-banner",
+    "creativeType": "Instacart - Display Banner",
+    "category": "Instacart",
+    "platform": "Instacart",
+    "placement": "Departments & Aisles",
+    "dimensions": [
+      { "width": 1200, "height": 400, "label": "Standard Banner (3:1)", "supportsRetina": false }
+    ],
+    "supportedFormats": ["JPG", "PNG"],
+    "fileSizeLimit": { "maxKB": 1024 },
+    "videoSpecs": null,
+    "notes": "Appears on storefront, departments, aisles, and search results pages."
+  },
+  {
+    "id": "instacart-shoppable-video",
+    "creativeType": "Instacart - Shoppable Video",
+    "category": "Instacart",
+    "platform": "Instacart",
+    "placement": "Storefront & Search",
+    "dimensions": [
+      { "width": 1920, "height": 1080, "label": "Landscape 16:9", "supportsRetina": false },
+      { "width": 1080, "height": 1920, "label": "Vertical 9:16", "supportsRetina": false },
+      { "width": 1080, "height": 1080, "label": "Square 1:1", "supportsRetina": false }
+    ],
+    "supportedFormats": ["MP4", "MOV"],
+    "fileSizeLimit": { "maxKB": 512000 },
+    "videoSpecs": {
+      "minDurationSeconds": 3,
+      "maxDurationSeconds": 30,
+      "recommendedDurationSeconds": [15],
+      "supportedFormats": ["MP4", "MOV"]
+    },
+    "notes": "Auto-plays when 50%+ visible, muted by default. Logo cropped into 40px circle. Includes product carousel like shoppable display."
   }
 ]

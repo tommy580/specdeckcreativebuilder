@@ -15,6 +15,8 @@ const CATEGORY_ORDER = [
   "OLV",
   "CTV",
   "Social",
+  "Google PMax",
+  "Instacart",
   "DOOH",
 ];
 
